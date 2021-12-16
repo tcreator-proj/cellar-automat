@@ -1,0 +1,8 @@
+version: "3.7"
+
+services:
+  cellar_authomat:
+    container_name: cellar_authomat
+    build: ./
+    ports:
+      - "8080:8080"
