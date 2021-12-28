@@ -1,37 +1,43 @@
 package ru.tcreator.cellar_authomat.utills;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import ru.tcreator.cellar_authomat.model.AroundChecking;
 import ru.tcreator.cellar_authomat.model.Dot;
+import ru.tcreator.cellar_authomat.model.Field;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.StringJoiner;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Supplier;
 
 public class FieldUtils {
 
-    public static AroundChecking[][] generateField(FieldSize size, Integer condition) {
-        var fieldSize = size.getSize();
-        AroundChecking[][] field = new Dot[fieldSize][fieldSize];
 
+    public static Field generateField(FieldSize size, Integer condition) {
+        var fieldSize = size.getSize();
+        CopyOnWriteArrayList<CopyOnWriteArrayList> column = new CopyOnWriteArrayList<>();
+        Field newPlace = new Field(column);
         for (int i = 0; i < fieldSize; i++) {
+            CopyOnWriteArrayList<AroundChecking> line = new CopyOnWriteArrayList<>();
             for (int j = 0; j < fieldSize; j++) {
+
                 Supplier<Boolean> result = () -> condition < new Random().nextInt(100);
-                field[i][j] = result.get()
-                        ? new Dot(i , j, true)
-                        : new Dot(i , j, false);
+                line.add(
+                        result.get()
+                            ? new Dot(i , j, true, newPlace)
+                            : new Dot(i , j, false, newPlace));
             }
+            column.add(line);
         }
-        return field;
+        return newPlace;
     }
 
     public static void printField(Field field) {
-        int fieldLen = field.getField().length;
-        AroundChecking[][] tmpField = field.getField();
+        var localField = field.getField();
         StringJoiner stringJoiner = new StringJoiner("|");
-        for (int i = 0; i < fieldLen; i++) {
-            for (int j = 0; j < fieldLen; j++) {
-                stringJoiner.add(tmpField[i][j].toString());
+        for (int i = 0; i < localField.size(); i++) {
+            for (int j = 0; j < localField.size(); j++) {
+                stringJoiner.add(localField.get(i).get(j).toString());
             }
             stringJoiner.add("\n");
         }
@@ -39,11 +45,14 @@ public class FieldUtils {
     }
 
 
-    private static String generateRowLine(int size) {
-        StringJoiner stringJoiner = new StringJoiner("\u005F");
-        for (int i = 0; i < size; i++) {
-            stringJoiner.add("");
+    public static void dotsStarter(Field field) {
+        var localField = field.getField();
+         for (int i = 0; i < localField.size(); i++) {
+            for (int j = 0; j < localField.size(); j++) {
+                var dot = (Dot) localField.get(i).get(j);
+                new Thread(dot).start();
+            }
         }
-        return stringJoiner.toString();
     }
+
 }

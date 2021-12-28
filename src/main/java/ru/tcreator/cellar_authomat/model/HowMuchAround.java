@@ -1,6 +1,5 @@
 package ru.tcreator.cellar_authomat.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
@@ -12,10 +11,14 @@ public enum HowMuchAround {
     TREE(3),
     FOUR(4);
 
-    private final Integer people;
+    private final Integer count;
 
 
     HowMuchAround(int i) {
-        this.people = i;
+        this.count = i;
+    }
+
+    public Integer getCount() {
+        return count;
     }
 }
