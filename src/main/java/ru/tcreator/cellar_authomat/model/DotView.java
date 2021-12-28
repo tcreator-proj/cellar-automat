@@ -1,4 +1,4 @@
-package model;
+package ru.tcreator.cellar_authomat.model;
 
 public enum DotView {
     DEAD(" "),

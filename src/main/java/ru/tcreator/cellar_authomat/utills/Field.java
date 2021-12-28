@@ -1,7 +1,5 @@
-package utills;
-
-import model.AroundChecking;
-
+package ru.tcreator.cellar_authomat.utills;
+import ru.tcreator.cellar_authomat.model.AroundChecking;
 
 public class Field {
 

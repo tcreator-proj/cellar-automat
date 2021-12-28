@@ -1,12 +1,11 @@
-package utills;
+package ru.tcreator.cellar_authomat.utills;
 
-import model.AroundChecking;
-import model.Dot;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.tcreator.cellar_authomat.model.AroundChecking;
+import ru.tcreator.cellar_authomat.model.Dot;
 
 import java.util.Random;
 import java.util.StringJoiner;
-import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class FieldUtils {

@@ -1,6 +1,6 @@
-package model;
+package ru.tcreator.cellar_authomat.model;
 
-public class Dot implements AroundChecking{
+public class Dot implements AroundChecking {
     private Integer x = 0;
     private Integer y = 0;
     private Boolean live = false;

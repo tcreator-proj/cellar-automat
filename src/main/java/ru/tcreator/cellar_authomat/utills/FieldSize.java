@@ -1,4 +1,4 @@
-package utills;
+package ru.tcreator.cellar_authomat.utills;
 
 public enum FieldSize {
     SMALL(30),
