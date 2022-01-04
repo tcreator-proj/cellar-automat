@@ -1,12 +1,10 @@
 package ru.tcreator.cellar_authomat.model;
-
-import lombok.Getter;
+import org.springframework.stereotype.Component;
 
 /**
- * How much people might be around of a living dots
+ * How many points might be around of a living or lives dots
  */
-
-@Getter
+@Component
 public enum HowMuchAround {
     ONE(1),
     TWO(2),

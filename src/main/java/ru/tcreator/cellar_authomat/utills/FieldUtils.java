@@ -1,5 +1,6 @@
 package ru.tcreator.cellar_authomat.utills;
 
+import org.springframework.stereotype.Component;
 import ru.tcreator.cellar_authomat.model.AroundChecking;
 import ru.tcreator.cellar_authomat.model.Dot;
 import ru.tcreator.cellar_authomat.model.Field;
@@ -10,7 +11,7 @@ import java.util.function.Supplier;
 
 public class FieldUtils {
 
-    public static Field generateFieldWithRandomDots(FieldSize size, Integer condition) {
+    public Field generateFieldWithRandomDots(FieldSize size, Integer condition) {
         var fieldSize = size.getSize();
         CopyOnWriteArrayList<CopyOnWriteArrayList> column = new CopyOnWriteArrayList<>();
         Field newPlace = new Field(column);
@@ -29,7 +30,7 @@ public class FieldUtils {
         return newPlace;
     }
 
-    public static void printField(Field field) {
+    public String drawField(Field field) {
         var localField= field.getField();
         StringBuilder stringBuilder = new StringBuilder();
         int size = localField.size();
@@ -40,7 +41,7 @@ public class FieldUtils {
             }
             stringBuilder.append("\n");
         }
-        System.out.println(stringBuilder);
+        return stringBuilder.toString();
     }
 
     //    public static void dotAsyncStarter(Field field) {

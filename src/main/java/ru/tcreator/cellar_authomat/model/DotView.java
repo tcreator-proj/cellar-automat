@@ -1,5 +1,10 @@
 package ru.tcreator.cellar_authomat.model;
 
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
+
+@Component
+@ComponentScan("ru.tcreator.cellar_authomat.model")
 public enum DotView {
     DEAD(" "),
     LIVE("X");

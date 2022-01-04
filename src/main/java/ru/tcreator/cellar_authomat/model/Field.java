@@ -1,12 +1,19 @@
 package ru.tcreator.cellar_authomat.model;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
+import ru.tcreator.cellar_authomat.service.FieldRunner;
+
 import java.util.concurrent.CopyOnWriteArrayList;
 
+@Component
+@NoArgsConstructor
+@AllArgsConstructor
+@ComponentScan("ru.tcreator.cellar_authomat.model")
 public class Field implements AroundChecking {
     private CopyOnWriteArrayList<CopyOnWriteArrayList> field;
-
-    public Field(CopyOnWriteArrayList<CopyOnWriteArrayList> field) {
-        this.field = field;
-    }
 
     public CopyOnWriteArrayList<CopyOnWriteArrayList> getField() {
         return this.field;

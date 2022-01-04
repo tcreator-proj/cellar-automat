@@ -1,21 +1,25 @@
 package ru.tcreator.cellar_authomat.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 import java.util.Objects;
 
+@Component
+@Getter
+@AllArgsConstructor
 public class Dot implements AroundChecking, Cloneable {
     private final Integer x;
     private final Integer y;
     private Boolean live;
 
-    public Dot(Integer x, Integer y, Boolean live) {
-        this.x = x;
-        this.y = y;
-        this.live = live;
-    }
-
     @Override
     public void isAloneAround(Field f) {
-        var field = f.getField();
+        var field= f.getField();
         var size = field.size();
         var howManyTimes = HowMuchAround.TREE.getCount(); // куб обхода x * x
         var x = this.x;

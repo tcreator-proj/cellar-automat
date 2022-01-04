@@ -1,19 +1,24 @@
-package ru.tcreator.cellar_authomat.model;
+package ru.tcreator.cellar_authomat.service;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Service;
+import ru.tcreator.cellar_authomat.model.Field;
 
-import ru.tcreator.cellar_authomat.utills.FieldUtils;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
+@Service
 public class FieldRunner extends Field {
+
+
     public FieldRunner(CopyOnWriteArrayList<CopyOnWriteArrayList> field) {
         super(field);
     }
 
     public void run() {
         while (!isHopeless()) {
-            FieldUtils.printField(this);
+
             isAloneAround(this);
-            FieldUtils.printField(this);
+
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
