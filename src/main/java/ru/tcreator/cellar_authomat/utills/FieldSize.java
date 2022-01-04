@@ -1,6 +1,7 @@
 package ru.tcreator.cellar_authomat.utills;
 
 public enum FieldSize {
+    TEST(3),
     XSMALL(10),
     SMALL(30),
     MEDIUM(40),

@@ -4,16 +4,13 @@ import ru.tcreator.cellar_authomat.model.AroundChecking;
 import ru.tcreator.cellar_authomat.model.Dot;
 import ru.tcreator.cellar_authomat.model.Field;
 
-import java.util.Arrays;
 import java.util.Random;
-import java.util.StringJoiner;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Supplier;
 
 public class FieldUtils {
 
-
-    public static Field generateField(FieldSize size, Integer condition) {
+    public static Field generateFieldWithRandomDots(FieldSize size, Integer condition) {
         var fieldSize = size.getSize();
         CopyOnWriteArrayList<CopyOnWriteArrayList> column = new CopyOnWriteArrayList<>();
         Field newPlace = new Field(column);
@@ -24,8 +21,8 @@ public class FieldUtils {
                 Supplier<Boolean> result = () -> condition < new Random().nextInt(100);
                 line.add(
                         result.get()
-                            ? new Dot(i , j, true, newPlace)
-                            : new Dot(i , j, false, newPlace));
+                            ? new Dot(i , j, true)
+                            : new Dot(i , j, false));
             }
             column.add(line);
         }
@@ -33,26 +30,27 @@ public class FieldUtils {
     }
 
     public static void printField(Field field) {
-        var localField = field.getField();
-        StringJoiner stringJoiner = new StringJoiner("|");
-        for (int i = 0; i < localField.size(); i++) {
-            for (int j = 0; j < localField.size(); j++) {
-                stringJoiner.add(localField.get(i).get(j).toString());
+        var localField= field.getField();
+        StringBuilder stringBuilder = new StringBuilder();
+        int size = localField.size();
+        for (int i = 0; i < size; i++) {
+            stringBuilder.append("|");
+            for (int j = 0; j < size; j++) {
+                stringBuilder.append(localField.get(i).get(j).toString()).append("|");
             }
-            stringJoiner.add("\n");
+            stringBuilder.append("\n");
         }
-        System.out.println(stringJoiner.toString());
+        System.out.println(stringBuilder);
     }
 
-
-    public static void dotsStarter(Field field) {
-        var localField = field.getField();
-         for (int i = 0; i < localField.size(); i++) {
-            for (int j = 0; j < localField.size(); j++) {
-                var dot = (Dot) localField.get(i).get(j);
-                new Thread(dot).start();
-            }
-        }
-    }
+    //    public static void dotAsyncStarter(Field field) {
+//        var localField= field.getField();
+//         for (int i = 0; i < localField.size(); i++) {
+//            for (int j = 0; j < localField.size(); j++) {
+//                var dot = (Dot) localField.get(i).get(j);
+//                dot.isAloneAround(field);
+//            }
+//        }
+//    }
 
 }

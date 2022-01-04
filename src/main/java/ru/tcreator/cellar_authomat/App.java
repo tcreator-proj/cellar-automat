@@ -11,12 +11,9 @@ public class App implements CommandLineRunner {
 
 
     @Override
-    public void run(String... args) throws Exception {
-        Field field = FieldUtils.generateField(FieldSize.SMALL,50);
-        FieldUtils.dotsStarter(field);
-        for (int i = 0; i < 50; i++) {
-            FieldUtils.printField(field);
-            Thread.sleep(450);
-        }
+    public void run(String... args) {
+        Field field = FieldUtils.generateFieldWithRandomDots(FieldSize.SMALL,80);
+        var runner = field.getRunner();
+        runner.run();
     }
 }

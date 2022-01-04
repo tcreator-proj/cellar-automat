@@ -8,6 +8,8 @@ import lombok.Getter;
 
 @Getter
 public enum HowMuchAround {
+    ONE(1),
+    TWO(2),
     TREE(3),
     FOUR(4);
 
