@@ -1,20 +1,20 @@
 package ru.tcreator.cellar_authomat.utills;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
-@Getter
+/**
+ * How many points might be around of a living or lives dots
+ */
+@NoArgsConstructor
 @AllArgsConstructor
-public enum FieldSize {
-    TEST(3),
-    XSMALL(10),
-    SMALL(30),
-    MEDIUM(40),
-    LARGE(50),
-    XLARGE(60);
+@Getter
+public enum HowMuchAround {
+    ONE(1),
+    TWO(2),
+    TREE(3),
+    FOUR(4);
 
-    private Integer size;
-
+    private Integer count;
 }

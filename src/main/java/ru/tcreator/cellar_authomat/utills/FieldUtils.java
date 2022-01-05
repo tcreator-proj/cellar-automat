@@ -1,5 +1,6 @@
 package ru.tcreator.cellar_authomat.utills;
-
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.tcreator.cellar_authomat.model.AroundChecking;
 import ru.tcreator.cellar_authomat.model.Dot;
@@ -9,6 +10,8 @@ import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Supplier;
 
+@Component
+@NoArgsConstructor
 public class FieldUtils {
 
     public Field generateFieldWithRandomDots(FieldSize size, Integer condition) {

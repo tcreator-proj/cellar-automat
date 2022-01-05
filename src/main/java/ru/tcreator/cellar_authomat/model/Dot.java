@@ -3,18 +3,19 @@ package ru.tcreator.cellar_authomat.model;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
+import ru.tcreator.cellar_authomat.utills.DotView;
+import ru.tcreator.cellar_authomat.utills.HowMuchAround;
+
 import java.util.Objects;
 
 @Component
 @Getter
+@NoArgsConstructor
 @AllArgsConstructor
 public class Dot implements AroundChecking, Cloneable {
-    private final Integer x;
-    private final Integer y;
+    private Integer x;
+    private Integer y;
     private Boolean live;
 
     @Override
@@ -52,18 +53,6 @@ public class Dot implements AroundChecking, Cloneable {
         if (foundedNeighbors < howManyTimes ) {
             die();
         }
-    }
-
-    public Integer getX() {
-        return this.x;
-    }
-
-    public Integer getY() {
-        return this.y;
-    }
-
-    public Boolean getLive() {
-        return this.live;
     }
 
     // Воскрешает клетку

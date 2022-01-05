@@ -1,5 +1,4 @@
 package ru.tcreator.cellar_authomat.service;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 import ru.tcreator.cellar_authomat.model.Field;
 
